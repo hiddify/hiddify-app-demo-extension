@@ -237,6 +237,8 @@ github.com/hashicorp/memberlist v0.1.3/go.mod h1:ajVTdAv/9Im8oMAAj5G31PhhMCZJV2p
 github.com/hashicorp/serf v0.8.2/go.mod h1:6hOLApaqBFA1NXqRQAsxw9QxuDEvNxSQRwA/JwenrHc=
 github.com/hashicorp/yamux v0.1.1 h1:yrQxtgseBDrq9Y652vSRDvsKCJKOUD+GzTS4Y0Y8pvE=
 github.com/hashicorp/yamux v0.1.1/go.mod h1:CtWFDAQgb7dxtzFs4tWbplKIe2jSi3+5vKbgIO0SLnQ=
+github.com/hiddify/hiddify-app-example-extension v0.0.0-20240928185410-086adbcac1bb h1:+/bCDJ2G9Ga7PW+I3P1qWapZJsrmY6pAzZm7o7VptMg=
+github.com/hiddify/hiddify-app-example-extension v0.0.0-20240928185410-086adbcac1bb/go.mod h1:2CDmFL4rYk2xi4usourMXTXDN+HMyKKg7I2ceGPh4UQ=
 github.com/hiddify/hiddify-core v1.9.1-0.20240929103236-ac905590079e h1:MNR+10ipXaNqgRy7PaoAlqVxI1vuveNUmYVHmuNPDGw=
 github.com/hiddify/hiddify-core v1.9.1-0.20240929103236-ac905590079e/go.mod h1:aBOBGc76S/YoG2JyADAaBfWNQ29wQHN7fWyu/XNCcJk=
 github.com/hiddify/hiddify-ip-scanner-extension v0.0.0-20240928194626-7f6dde034dfe h1:lqlc/H76XSDdOlwboI77pdDZGTwzNh6/J0MaYGOYUAc=

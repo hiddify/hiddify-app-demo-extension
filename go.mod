@@ -1,10 +1,14 @@
-module github.com/author_name/project_urlname
+module github.com/hiddify/hiddify-app-demo-extension
 
 go 1.22.0
 
 toolchain go1.22.3
 
-require github.com/hiddify/hiddify-core v1.9.1-0.20240929103236-ac905590079e
+require (
+	github.com/fatih/color v1.16.0
+	github.com/hiddify/hiddify-core v1.9.1-0.20240929103236-ac905590079e
+	github.com/sagernet/sing-box v1.8.9
+)
 
 require (
 	berty.tech/go-libtor v1.0.385 // indirect
@@ -17,7 +21,6 @@ require (
 	github.com/cretz/bine v0.2.0 // indirect
 	github.com/desertbit/timer v0.0.0-20180107155436-c41aec40b27f // indirect
 	github.com/dgryski/go-metro v0.0.0-20211217172704-adc40b04c140 // indirect
-	github.com/fatih/color v1.16.0 // indirect
 	github.com/francoispqt/gojay v1.2.13 // indirect
 	github.com/fsnotify/fsnotify v1.7.0 // indirect
 	github.com/gaukas/godicttls v0.0.4 // indirect
@@ -34,6 +37,7 @@ require (
 	github.com/google/pprof v0.0.0-20240528025155-186aa0362fba // indirect
 	github.com/gorilla/websocket v1.5.3 // indirect
 	github.com/hashicorp/yamux v0.1.1 // indirect
+	github.com/hiddify/hiddify-app-example-extension v0.0.0-20240928185410-086adbcac1bb // indirect
 	github.com/hiddify/hiddify-ip-scanner-extension v0.0.0-20240928194626-7f6dde034dfe // indirect
 	github.com/hiddify/ray2sing v0.0.0-20240804185422-f340989b59a0 // indirect
 	github.com/imkira/go-observer/v2 v2.0.0-20230629064422-8e0b61f11f1b // indirect
@@ -82,7 +86,6 @@ require (
 	github.com/sagernet/quic-go v0.47.0-beta.2 // indirect
 	github.com/sagernet/reality v0.0.0-20230406110435-ee17307e7691 // indirect
 	github.com/sagernet/sing v0.4.3 // indirect
-	github.com/sagernet/sing-box v1.8.9 // indirect
 	github.com/sagernet/sing-dns v0.2.3 // indirect
 	github.com/sagernet/sing-mux v0.2.0 // indirect
 	github.com/sagernet/sing-quic v0.2.2 // indirect
