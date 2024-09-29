@@ -319,8 +319,8 @@ func init() {
 	ex.RegisterExtension(
 		ex.ExtensionFactory{
 			Id:          "github.com/hiddify/hiddify_app_demo_extension/hiddify_extension", // Package identifier
-			Title:       "hiddify-app-demo-extension",                                      // Display title of the extension
-			Description: "Awesome Extension hiddify_app_demo_extension created by hiddify", // Brief description of the extension
+			Title:       "Hiddify Demo Extension",                                      // Display title of the extension
+			Description: "This extension includes all the UI elements available in the Hiddify Extensions SDK.", // Brief description of the extension
 			Builder:     NewHiddifyAppDemoExtension,                                        // Function to create a new instance
 		},
 	)
