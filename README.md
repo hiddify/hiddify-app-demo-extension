@@ -1,31 +1,6 @@
 # hiddify_app_demo_extension
+This extension contains all ui elements exist in the hiddify extensions sdk
 
-
-## How to Use This Template
-
-**Important:** DO NOT FORK this project. Instead, use the <img width="100px" alt="Use this template" src="https://github.com/user-attachments/assets/630e6b6c-9d79-4387-9431-6757e72e552d">
- feature.
-
-### Steps to Get Started
-
-0. **Star this project** ⭐
-1. **Use the template:**
-   - Click on the <img width="100px" alt="Use this template" src="https://github.com/user-attachments/assets/630e6b6c-9d79-4387-9431-6757e72e552d"> button:
-   
-2. **Name your project:**
-   - Example: `my-awesome-extension` (use lowercase and dash for separation).
-3. **Wait for the first CI run:**
-   - GitHub Actions will set up the template and commit changes to your new repository.
-
-## Running and Testing the Extension
-
-1. Run the following command in your terminal (`bash` or `wsl`):
-    ```bash
-    ./cmd.sh
-    ```
-2. Open [https://127.0.0.1:12346](https://127.0.0.1:12346).
-3. Enable your extension.
-4. Navigate to your extension's page.
 
 
 ## 🌎 Translations
