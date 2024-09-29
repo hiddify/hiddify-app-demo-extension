@@ -23,19 +23,37 @@ var (
 
 // HiddifyAppDemoExtensionData holds the data specific to HiddifyAppDemoExtension
 type HiddifyAppDemoExtensionData struct {
-	Count int `json:"count"` // Number of counts for the extension
+	Count     int    `json:"count"`
+	Input     string `json:"input"`
+	Password  string `json:"password"`
+	Email     string `json:"email"`
+	Selected  bool   `json:"selected"`
+	Textarea  string `json:"textarea"`
+	SwitchVal bool   `json:"switchVal"`
+	// checkbox  string
+	Radiobox string `json:"radiobox"`
+	Content  string `json:"content"`
 }
 
 // Field name constants for easy reference, use similar name to the json key
 const (
-	CountKey = "count"
+	CountKey    = "count"
+	InputKey    = "input"
+	PasswordKey = "password"
+	EmailKey    = "email"
+	SelectKey   = "select"
+	TextAreaKey = "textarea"
+	SwitchKey   = "switchVal"
+	CheckboxKey = "checkbox"
+	RadioboxKey = "radiobox"
+	ContentKey  = "content"
 )
 
 // HiddifyAppDemoExtension represents the core functionality of the extension
 type HiddifyAppDemoExtension struct {
 	ex.Base[HiddifyAppDemoExtensionData]                    // Embedding base extension functionality
-	cancel                        context.CancelFunc // Function to cancel background tasks
-	console                       string             // Stores console output
+	cancel                               context.CancelFunc // Function to cancel background tasks
+	console                              string             // Stores console output
 }
 
 // GetUI returns the UI form for the extension
@@ -57,11 +75,11 @@ func (e *HiddifyAppDemoExtension) GetUI() ui.Form {
 			},
 		}
 	}
-	// Inital page
 	return ui.Form{
 		Title:       "hiddify-app-demo-extension",
 		Description: "Awesome Extension hiddify_app_demo_extension created by hiddify",
-		Buttons:     []string{ui.Button_Cancel, ui.Button_Submit},
+
+		Buttons: []string{ui.Button_Cancel, ui.Button_Submit},
 		Fields: []ui.FormField{
 			{
 				Type:        ui.FieldInput,
@@ -69,15 +87,93 @@ func (e *HiddifyAppDemoExtension) GetUI() ui.Form {
 				Label:       "Count",
 				Placeholder: "This will be the count",
 				Required:    true,
-				Value:       fmt.Sprintf("%d", e.Base.Data.Count), // Default value from stored data
-				Validator:   ui.ValidatorDigitsOnly,               // Only allow digits
+				Value:       fmt.Sprintf("%d", e.Base.Data.Count),
+				Validator:   ui.ValidatorDigitsOnly,
 			},
 			{
-				Type:  ui.FieldConsole,
-				Key:   "console",
-				Label: "Console",
-				Value: e.console, // Display current console output
-				Lines: 20,
+				Type:        ui.FieldInput,
+				Key:         InputKey,
+				Label:       "Hi Group",
+				Placeholder: "Hi Group flutter",
+				Required:    true,
+				Value:       e.Base.Data.Input,
+			},
+			{
+				Type:     ui.FieldPassword,
+				Key:      PasswordKey,
+				Label:    "Password",
+				Required: true,
+				Value:    e.Base.Data.Password,
+			},
+			{
+				Type:        ui.FieldEmail,
+				Key:         EmailKey,
+				Label:       "Email Label",
+				Placeholder: "Enter your email",
+				Required:    true,
+				Value:       e.Base.Data.Email,
+			},
+			{
+				Type:  ui.FieldSwitch,
+				Key:   SelectKey,
+				Label: "Select Label",
+				Value: strconv.FormatBool(e.Base.Data.Selected),
+			},
+			{
+				Type:        ui.FieldTextArea,
+				Key:         TextAreaKey,
+				Label:       "TextArea Label",
+				Placeholder: "Enter your text",
+				Required:    true,
+				Value:       e.Base.Data.Textarea,
+			},
+			{
+				Type:  ui.FieldSwitch,
+				Key:   SwitchKey,
+				Label: "Switch Label",
+				Value: strconv.FormatBool(e.Base.Data.SwitchVal),
+			},
+			// {
+			// 	Type:     ui.Checkbox,
+			// 	Key:      CheckboxKey,
+			// 	Label:    "Checkbox Label",
+			// 	Required: true,
+			// 	Value:    e.checkbox,
+			// 	Items: []ui.SelectItem{
+			// 		{
+			// 			Label: "A",
+			// 			Value: "A",
+			// 		},
+			// 		{
+			// 			Label: "B",
+			// 			Value: "B",
+			// 		},
+			// 	},
+			// },
+			{
+				Type:     ui.FieldRadioButton,
+				Key:      RadioboxKey,
+				Label:    "Radio Label",
+				Required: true,
+				Value:    e.Base.Data.Radiobox,
+				Items: []ui.SelectItem{
+					{
+						Label: "A",
+						Value: "A",
+					},
+					{
+						Label: "B",
+						Value: "B",
+					},
+				},
+			},
+			{
+				Type:     ui.FieldTextArea,
+				Readonly: true,
+				Key:      ContentKey,
+				Label:    "Content",
+				Value:    e.Base.Data.Content,
+				Lines:    10,
 			},
 		},
 	}
@@ -98,6 +194,42 @@ func (e *HiddifyAppDemoExtension) setFormData(data map[string]string) error {
 			return err // Return parsing error
 		}
 	}
+	if val, ok := data[InputKey]; ok {
+		e.Base.Data.Input = val
+	}
+	if val, ok := data[PasswordKey]; ok {
+		e.Base.Data.Password = val
+	}
+	if val, ok := data[EmailKey]; ok {
+		e.Base.Data.Email = val
+	}
+	if val, ok := data[SelectKey]; ok {
+		if selectedValue, err := strconv.ParseBool(val); err == nil {
+			e.Base.Data.Selected = selectedValue
+		} else {
+			return err
+		}
+	}
+	if val, ok := data[TextAreaKey]; ok {
+		e.Base.Data.Textarea = val
+	}
+	if val, ok := data[SwitchKey]; ok {
+		if selectedValue, err := strconv.ParseBool(val); err == nil {
+			e.Base.Data.SwitchVal = selectedValue
+		} else {
+			return err
+		}
+	}
+	// if val, ok := data[CheckboxKey]; ok {
+	// 	e.checkbox = val
+	// }
+	if val, ok := data[ContentKey]; ok {
+		e.Base.Data.Content = val
+	}
+	if val, ok := data[RadioboxKey]; ok {
+		e.Base.Data.Radiobox = val
+	}
+
 	return nil // Return nil if data is set successfully
 }
 
@@ -167,7 +299,15 @@ func NewHiddifyAppDemoExtension() ex.Extension {
 	return &HiddifyAppDemoExtension{
 		Base: ex.Base[HiddifyAppDemoExtensionData]{
 			Data: HiddifyAppDemoExtensionData{ // Set default data
-				Count: 4, // Default count value
+				Input:     "default",
+				Password:  "123456",
+				Email:     "appdemo@extension.com",
+				Selected:  false,
+				Textarea:  "area",
+				SwitchVal: true,
+				Radiobox:  "A",
+				Content:   "Welcome to Example Extension",
+				Count:     10,
 			},
 		},
 		console: yellow.Sprint("Welcome to ") + green.Sprint("hiddify-app-demo-extension\n"), // Default message
@@ -179,9 +319,9 @@ func init() {
 	ex.RegisterExtension(
 		ex.ExtensionFactory{
 			Id:          "github.com/hiddify/hiddify_app_demo_extension/hiddify_extension", // Package identifier
-			Title:       "hiddify-app-demo-extension",                                                         // Display title of the extension
-			Description: "Awesome Extension hiddify_app_demo_extension created by hiddify",                                                     // Brief description of the extension
-			Builder:     NewHiddifyAppDemoExtension,                                                       // Function to create a new instance
+			Title:       "hiddify-app-demo-extension",                                      // Display title of the extension
+			Description: "Awesome Extension hiddify_app_demo_extension created by hiddify", // Brief description of the extension
+			Builder:     NewHiddifyAppDemoExtension,                                        // Function to create a new instance
 		},
 	)
 }
