@@ -6,12 +6,13 @@ toolchain go1.22.3
 
 require (
 	github.com/fatih/color v1.16.0
-	github.com/hiddify/hiddify-core v1.9.1-0.20240929103236-ac905590079e
+	github.com/hiddify/hiddify-core v1.9.1-0.20240930192718-3bcfc11a80c7
 	github.com/sagernet/sing-box v1.8.9
 )
 
 require (
 	berty.tech/go-libtor v1.0.385 // indirect
+	github.com/Yiwen-Chan/tinydb v0.0.0-20230129042445-3321642f0674 // indirect
 	github.com/ajg/form v1.5.1 // indirect
 	github.com/andybalholm/brotli v1.1.0 // indirect
 	github.com/bepass-org/warp-plus v1.2.4 // indirect
@@ -37,8 +38,7 @@ require (
 	github.com/google/pprof v0.0.0-20240528025155-186aa0362fba // indirect
 	github.com/gorilla/websocket v1.5.3 // indirect
 	github.com/hashicorp/yamux v0.1.1 // indirect
-	github.com/hiddify/hiddify-app-example-extension v0.0.0-20240928185410-086adbcac1bb // indirect
-	github.com/hiddify/hiddify-ip-scanner-extension v0.0.0-20240928194626-7f6dde034dfe // indirect
+	github.com/hiddify/hiddify-ip-scanner-extension v0.0.0-20240929171529-e72be5930514 // indirect
 	github.com/hiddify/ray2sing v0.0.0-20240804185422-f340989b59a0 // indirect
 	github.com/imkira/go-observer/v2 v2.0.0-20230629064422-8e0b61f11f1b // indirect
 	github.com/improbable-eng/grpc-web v0.15.0 // indirect

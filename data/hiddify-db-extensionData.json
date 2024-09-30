@@ -1,0 +1,10 @@
+{
+    "_default": null,
+    "extensionData": [
+        {
+            "id": "github.com/hiddify/hiddify_app_demo_extension/hiddify_extension",
+            "enable": false,
+            "data": null
+        }
+    ]
+}
