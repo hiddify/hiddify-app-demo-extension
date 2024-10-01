@@ -99,11 +99,7 @@ func (e *HiddifyAppDemoExtension) getRunningUI() ui.Form {
 				Value: e.console, // Display console output
 				Lines: 20,
 			}},
-			{{
-				Type:  ui.FieldButton,
-				Key:   ui.ButtonCancel,
-				Label: "Cancel",
-			}},
+			{{Type: ui.FieldButton, Key: ui.ButtonCancel, Label: "Cancel"}},
 		},
 	}
 }
@@ -194,16 +190,8 @@ func (e *HiddifyAppDemoExtension) getStoppedUI() ui.Form {
 				Lines:    10,
 			}},
 			{
-				{
-					Type:  ui.FieldButton,
-					Key:   ButtonTestKey,
-					Label: "Test",
-				},
-				{
-					Type:  ui.FieldButton,
-					Key:   ui.ButtonSubmit,
-					Label: "Submit",
-				},
+				{Type: ui.FieldButton, Key: ButtonTestKey, Label: "Test"},
+				{Type: ui.FieldButton, Key: ui.ButtonSubmit, Label: "Submit"},
 			},
 		},
 	}
