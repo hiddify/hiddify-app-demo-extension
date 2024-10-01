@@ -6,7 +6,7 @@ toolchain go1.22.3
 
 require (
 	github.com/fatih/color v1.16.0
-	github.com/hiddify/hiddify-core v1.9.1-0.20240930192718-3bcfc11a80c7
+	github.com/hiddify/hiddify-core v1.9.1-0.20241001062030-9cc2b014f29d
 	github.com/sagernet/sing-box v1.8.9
 )
 
@@ -38,7 +38,7 @@ require (
 	github.com/google/pprof v0.0.0-20240528025155-186aa0362fba // indirect
 	github.com/gorilla/websocket v1.5.3 // indirect
 	github.com/hashicorp/yamux v0.1.1 // indirect
-	github.com/hiddify/hiddify-ip-scanner-extension v0.0.0-20240929171529-e72be5930514 // indirect
+	github.com/hiddify/hiddify-ip-scanner-extension v0.0.0-20240930194434-fd0f97403b8a // indirect
 	github.com/hiddify/ray2sing v0.0.0-20240804185422-f340989b59a0 // indirect
 	github.com/imkira/go-observer/v2 v2.0.0-20230629064422-8e0b61f11f1b // indirect
 	github.com/improbable-eng/grpc-web v0.15.0 // indirect

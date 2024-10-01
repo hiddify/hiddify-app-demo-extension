@@ -47,7 +47,7 @@ func (e *HiddifyAppDemoExtension) backgroundTask(ctx context.Context) {
 		select {
 		case <-ctx.Done(): // If context is done (cancel is pressed), exit the task
 			e.cancel = nil
-			e.addAndUpdateConsole(red.Sprint("Background Task Canceled")) // Notify cancellation
+			e.addAndUpdateConsole(red.Sprint("Background Task Stoped")) // Notify cancellation
 			return
 		case <-time.After(1 * time.Second): // Wait for a second before the next iteration
 			e.addAndUpdateConsole(red.Sprint(count), yellow.Sprint(" Background task ", count, " working..."))
@@ -65,40 +65,49 @@ func (e *HiddifyAppDemoExtension) addAndUpdateConsole(message ...any) {
 
 // SubmitData processes and validates form submission data
 func (e *HiddifyAppDemoExtension) SubmitData(button string, data map[string]string) error {
-	if button != ui.Button_Submit {
+	switch button {
+	case ui.ButtonDialogOk, ui.ButtonDialogClose:
+		return nil
+	case ui.ButtonCancel:
+		return e.stop()
+	case ui.ButtonSubmit:
+		if err := e.setFormData(data); err != nil {
+			e.ShowMessage("Invalid data", err.Error()) // Show error message if data is invalid
+			return err                                 // Return the error
+		}
+
+		// stop any ongoing background task
+		if e.cancel != nil {
+			e.cancel()
+		}
+
+		// Create a new context for the task and store the cancel function
+		ctx, cancel := context.WithCancel(context.Background())
+		e.cancel = cancel
+
+		// Run the background task concurrently
+		go e.backgroundTask(ctx)
+
+		return nil
+
+	default:
+		// Show message for undefined button actions
 		return e.ShowMessage("Button "+button+" is pressed", "No action is defined for this button")
 	}
-
-	// Validate and set the form data
-	err := e.setFormData(data)
-	if err != nil {
-		e.ShowMessage("Invalid data", err.Error()) // Show error message if data is invalid
-		return err                                 // Return the error
-	}
-	// Cancel any ongoing background task
-	if e.cancel != nil {
-		e.cancel()
-	}
-	ctx, cancel := context.WithCancel(context.Background()) // Create a new context for the task
-	e.cancel = cancel                                       // Store the cancel function
-
-	go e.backgroundTask(ctx) // Run the background task concurrently
-
-	return nil // Return nil if submission is successful
 }
 
-// Cancel stops the ongoing background task if it exists
-func (e *HiddifyAppDemoExtension) Cancel() error {
+// Stop stops the ongoing background task if it exists
+func (e *HiddifyAppDemoExtension) stop() error {
 	if e.cancel != nil {
-		e.cancel()     // Cancel the task
+		e.cancel()     // Stop the task
 		e.cancel = nil // Clear the cancel function
 	}
 	return nil // Return nil after cancellation
 }
 
 // Stop is called when the extension is closed
-func (e *HiddifyAppDemoExtension) Stop() error {
-	return e.Cancel() // Simply delegate to Cancel
+func (e *HiddifyAppDemoExtension) Close() error {
+	return e.stop() // Simply delegate to Stop
 }
 
 // To Modify user's config before connecting, you can use this function

@@ -101,7 +101,7 @@ func (e *HiddifyAppDemoExtension) getRunningUI() ui.Form {
 			}},
 			{{
 				Type:  ui.FieldButton,
-				Key:   ui.Button_Cancel,
+				Key:   ui.ButtonCancel,
 				Label: "Cancel",
 			}},
 		},
@@ -201,7 +201,7 @@ func (e *HiddifyAppDemoExtension) getStoppedUI() ui.Form {
 				},
 				{
 					Type:  ui.FieldButton,
-					Key:   ui.Button_Submit,
+					Key:   ui.ButtonSubmit,
 					Label: "Submit",
 				},
 			},
